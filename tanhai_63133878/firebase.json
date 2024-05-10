@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"tanhai-firebase","appId":"1:895753696691:android:9bc9a79789f0cc49ae47c6","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"tanhai-firebase","configurations":{"android":"1:895753696691:android:9bc9a79789f0cc49ae47c6","ios":"1:895753696691:ios:c306db1b4e1bbb2dae47c6"}}}}}}
