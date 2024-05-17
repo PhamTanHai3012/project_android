@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tanhai_63133878/commercial_app/models.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:tanhai_63133878/commercial_app/page_capnhat_sp_admin.dart';
+import 'package:tanhai_63133878/commercial_app/page_them_sp_admin.dart';
 import 'package:tanhai_63133878/helper/widget_connect_firebase.dart';
+import 'package:tanhai_63133878/helper/storage_image_helper.dart';
 
 class FruitStoreAdmin extends StatelessWidget {
   const FruitStoreAdmin({super.key});
@@ -60,14 +63,19 @@ class PageDSSP_Admin extends StatelessWidget {
                             label: "Cập nhật",
                             foregroundColor: Colors.blue,
                             onPressed: (context) {
-
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) =>
+                                      PageCNSP_Admin(fruitSnapShot: fruitSnap),
+                                  ));
                             },
                           ),
                           SlidableAction(
                             icon: Icons.delete,
                             label: "Xóa",
                             foregroundColor: Colors.red,
-                            onPressed: (context) {
+                            onPressed: (context) async {
+                              await deleteImage(folder: ["Fruit_app"], fileName: "${fruitSnap.fruit.id}.jpg");
+                              await fruitSnap.xoa();
                             },
                           )
                         ]
@@ -106,8 +114,11 @@ class PageDSSP_Admin extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-
+        onPressed: (){
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) =>
+                  PageTSP_Admin(),
+              ));
         },
       ),
     );

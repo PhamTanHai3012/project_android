@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tanhai_63133878/Phone_SMS/page_phone_sms.dart';
 import 'package:tanhai_63133878/TH1/page_profile.dart';
 import 'package:tanhai_63133878/app_state/page_counter.dart';
 import 'package:tanhai_63133878/commercial_app/page_home_fruit_store.dart';
@@ -47,6 +48,8 @@ class PageHome extends StatelessWidget {
               _buildButton(context, lable: "Page List Photo", destination: PageListPhotos()),
               SizedBox(height: 10),
               _buildButton(context, lable: "Simple Controller RSS", destination: RssAPP()),
+              SizedBox(height: 10),
+              _buildButton(context, lable: "Phone SMS", destination: PhoneSMSPage()),
             ],
           ),
         ),
