@@ -45,6 +45,7 @@ class PhoneSMSPage extends StatelessWidget {
     );
   }
 }
+
 Future<bool> openPhoneDial (String phoneNumber) async{
   bool check = await canLaunchUrl(Uri(scheme: 'tel', path: phoneNumber));
   if(check == false) return false;

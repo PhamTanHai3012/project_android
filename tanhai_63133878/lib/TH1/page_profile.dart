@@ -51,8 +51,8 @@ class _MyProfileState extends State<MyProfile> {
         )
       ),
       body: _buildBody(context, index),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: index,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: index,
           items: [
             BottomNavigationBarItem(
                 activeIcon: Icon(Icons.home, color: Colors.blue),
