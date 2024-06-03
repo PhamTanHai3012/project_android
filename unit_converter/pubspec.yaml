@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_launcher_icons: ^0.13.0
+  http: ^1.2.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -70,6 +71,7 @@ flutter:
     - assets/icons/power.png
     - assets/icons/time.png
     - assets/icons/volume.png
+    - assets/icons/sound.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -93,11 +95,6 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  fonts:
-    - family: Raleway
-      fonts:
-        - asset: assets/fonts/Raleway-Regular.ttf
-        - asset: assets/fonts/Raleway-Medium.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_icons:

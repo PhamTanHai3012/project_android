@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:unit_converter/models/unit.dart';
-import 'package:unit_converter/pages/converter_screen.dart';
-
-final double _rowHeight = 75;
-final BorderRadius _borderRadius = BorderRadius.circular(_rowHeight / 2);
+import 'package:unit_converter/pages/converter_pages.dart';
 
 class Category extends StatelessWidget {
   final String name;
   final String icon;
   final List<Unit> units;
+  int Used = 0;
 
-  const Category({required this.name, required this.icon , required this.units});
+  Category({required this.name, required this.icon , required this.units, required this.Used});
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +19,24 @@ class Category extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         color: Colors.deepOrange.shade50,
         child: Container(
-          height: _rowHeight,
-          child: InkWell(
-            borderRadius: _borderRadius,
-            highlightColor: Colors.deepOrange[200],
-            splashColor: Colors.deepOrange[200],
-            onTap: () {
+          height: 75,
+          child: ElevatedButton (
+            onPressed: () {
               _navigateToConverter(context);
+              Used++;
             },
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Image.asset(icon)
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: SizedBox(
+                    width: 38,
+                    height: 38,
+                    child: Image.asset(icon, fit: BoxFit.cover),
                   ),
-                  Center(child: Text(name, style: TextStyle(fontSize: 20)))
-                ],
-              ),
+                ),
+                Center(child: Text(name, style: TextStyle(fontSize: 20, color: Colors.black)))
+              ],
             ),
           ),
         ),

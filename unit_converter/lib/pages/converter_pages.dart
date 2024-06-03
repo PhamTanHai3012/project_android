@@ -20,7 +20,6 @@ class _ConverterScreenState extends State<ConverterScreen> {
   String _convertedValue = '';
   late List<DropdownMenuItem> _unitMenuItems;
   bool _showValidationError = false;
-  bool _showErrorUI = false;
 
   @override
   void initState() {
@@ -28,8 +27,6 @@ class _ConverterScreenState extends State<ConverterScreen> {
     _createDropdownMenuItems();
     _setDefaults();
   }
-
-  static final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +48,8 @@ class _ConverterScreenState extends State<ConverterScreen> {
     );
   }
 
-///////////////////////////
-//////HelperMethod////////
-
-  /// Returns a list of mock [Unit]s.
-  List<Unit> _retrieveUnitList(String categoryName) {
-    return List.generate(10, (int i) {
-      i += 1;
-      return Unit(
-        name: '$categoryName Unit $i',
-        conversion: i.toDouble(),
-      );
-    });
-  }
-
-  /// Sets the default values for the 'from' and 'to' [Dropdown]s.
+  //Đặt kiểu giá trị mặc định cho giá trị ban đầu và giá trị chuyển đổi
+  // là kiểu giá trị đầu tiên [0] và thứ nhất [1]
   void _setDefaults() {
     setState(() {
       _fromValue = widget.units[0];
@@ -74,7 +58,7 @@ class _ConverterScreenState extends State<ConverterScreen> {
     _updateConversion();
   }
 
-  /// Clean up conversion; trim trailing zeros, e.g. 5.500 -> 5.5, 10.0 -> 10
+  // Loại bỏ số 0 và dấu . thập phân dư thừa 5.500 -> 5.5, 10.0 -> 10
   String _format(double conversion) {
     var outputNum = conversion.toStringAsPrecision(7);
     if (outputNum.contains('.') && outputNum.endsWith('0')) {
@@ -91,29 +75,10 @@ class _ConverterScreenState extends State<ConverterScreen> {
   }
 
   void _updateConversion() async {
-    if (widget.name == apiCategory['name']) {
-      final api = ApiService();
-      final conversion = await api.convert(apiCategory['route']!,
-          _inputValue.toString(), _fromValue.name, _toValue.name);
-
-      // API error or not connected to the internet
-      if (conversion == null) {
-        setState(() {
-          _showErrorUI = true;
-        });
-      } else {
-        setState(() {
-          _showErrorUI = false;
-          _convertedValue = _format(conversion);
-        });
-      }
-    } else {
-      // For the static units, we do the conversion ourselves
-      setState(() {
-        _convertedValue = _format(
-            _inputValue * (_toValue.conversion / _fromValue.conversion));
-      });
-    }
+    setState(() {
+      _convertedValue = _format(
+          _inputValue * (_toValue.conversion / _fromValue.conversion));
+    });
   }
 
   void _updateInputValue(String input) {
@@ -134,7 +99,7 @@ class _ConverterScreenState extends State<ConverterScreen> {
     return widget.units.firstWhere(
       (Unit unit) {
         return unit.name == unitName;
-      } // orElse: null,
+      }
     );
   }
 
@@ -142,24 +107,26 @@ class _ConverterScreenState extends State<ConverterScreen> {
     setState(() {
       _fromValue = _getUnit(unitName);
     });
-    if (_inputValue != null) {
-      _updateConversion();
-    }
+    _updateConversion();
   }
 
   void _updateToConversion(dynamic unitName) {
     setState(() {
       _toValue = _getUnit(unitName);
     });
-    if (_inputValue != null) {
-      _updateConversion();
-    }
+    _updateConversion();
   }
 
-///////////////////////////
-//////HelperWidgets////////
+  void InputOutput() {
+    setState(() {
+      final temp = _fromValue;
+      _fromValue = _toValue;
+      _toValue = temp;
+      _updateConversion();
+    });
+  }
 
-  /// Creates fresh list of [DropdownMenuItem] widgets, given a list of [Unit]s.
+  // Tạo danh sách DropdownMenuItem để hiển thị danh sách các kiểu đơn vị
   void _createDropdownMenuItems() {
     var newItems = <DropdownMenuItem>[];
     for (var unit in widget.units) {
@@ -194,7 +161,6 @@ class _ConverterScreenState extends State<ConverterScreen> {
   Padding buildInput() {
     return Padding(
       padding: EdgeInsets.all(16),
-      key: _formKey,
       child: Column(
         children: [
           TextFormField(
@@ -215,11 +181,14 @@ class _ConverterScreenState extends State<ConverterScreen> {
   }
 
   Widget buildArrows() {
-    return RotatedBox(
-      quarterTurns: 1,
-      child: Icon(
-        Icons.compare_arrows,
-        size: 40.0,
+    return GestureDetector(
+      onTap: InputOutput,
+      child: RotatedBox(
+        quarterTurns: 1,
+        child: Icon(
+          Icons.compare_arrows,
+          size: 40.0,
+        ),
       ),
     );
   }
@@ -239,35 +208,6 @@ class _ConverterScreenState extends State<ConverterScreen> {
           ),
           _createDropdown(_toValue.name, _updateToConversion),
         ],
-      ),
-    );
-  }
-
-  Widget showError() {
-    return SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.all(16),
-        padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.0),
-          color: Colors.red,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.error_outline,
-              size: 180.0,
-              color: Colors.white,
-            ),
-            Text(
-              "Oh no! We can't connect right now!",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: Colors.white),
-            ),
-          ],
-        ),
       ),
     );
   }

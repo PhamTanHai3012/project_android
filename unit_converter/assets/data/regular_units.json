@@ -1,20 +1,20 @@
 {
-  "Length": [
+  "Độ dài": [
     {
-      "name": "Meter",
+      "name": "Mét",
       "conversion": 1.0,
       "base_unit": true
     },
     {
-      "name": "Millimeter",
+      "name": "Milimet",
       "conversion": 1000.0
     },
     {
-      "name": "Centimeter",
+      "name": "Centimet",
       "conversion": 100.0
     },
     {
-      "name": "Kilometer",
+      "name": "Kilomet",
       "conversion": 0.001
     },
     {
@@ -22,7 +22,7 @@
       "conversion": 39.3701
     },
     {
-      "name": "Foot",
+      "name": "Feet",
       "conversion": 3.28084
     },
     {
@@ -30,89 +30,85 @@
       "conversion": 1.09361
     },
     {
-      "name": "Mile",
+      "name": "Dặm",
       "conversion": 0.000621371
     }
   ],
-  "Area": [
+  "Diện tích": [
     {
-      "name": "Meter squared",
+      "name": "m²",
       "conversion": 1.0,
       "base_unit": true
     },
     {
-      "name": "Kilometer squared",
+      "name": "km²",
       "conversion": 0.000001
     },
     {
-      "name": "Square inch",
+      "name": "Inch vuông",
       "conversion": 1550.0
     },
     {
-      "name": "Square foot",
+      "name": "Feet vuông",
       "conversion": 10.7639
     },
     {
-      "name": "Square yard",
+      "name": "Yard vuông",
       "conversion": 1.19599
     },
     {
-      "name": "Acre",
+      "name": "Mẫu vuông",
       "conversion": 0.000247105
     },
     {
-      "name": "Hectare",
+      "name": "Hecta",
       "conversion": 0.0001
     }
   ],
-  "Volume": [
+  "Thể tích": [
     {
-      "name": "Cubic meter",
+      "name": "m³",
       "conversion": 1.0,
       "base_unit": true
     },
     {
-      "name": "US legal cup",
-      "conversion": 4166.67
+      "name": "dm³",
+      "conversion": 1000.0
     },
     {
-      "name": "US fluid ounce",
-      "conversion": 33814.0
+      "name": "cm³",
+      "conversion": 1000000.0
     },
     {
-      "name": "US tablespoon",
-      "conversion": 67628.0
+      "name": "mm³",
+      "conversion": 1000000000.0
     },
     {
-      "name": "US teaspoon",
-      "conversion": 202884.0
+      "name": "dam³",
+      "conversion": 0.001
     },
     {
-      "name": "Imperial cup",
-      "conversion": 3519.51
+      "name": "hm³",
+      "conversion": 0.000001
     },
     {
-      "name": "Imperial fluid ounce",
-      "conversion": 35195.1
-    },
-    {
-      "name": "Imperial tablespoon",
-      "conversion": 56312.13673
-    },
-    {
-      "name": "Imperial teaspoon",
-      "conversion": 168936.41019
+      "name": "km³",
+      "conversion": 0.000000001
     }
   ],
-  "Mass": [
+  "Khối lượng": [
     {
-      "name": "Kilogram",
+      "name": "kg",
       "conversion": 1.0,
       "base_unit": true
     },
     {
-      "name": "Gram",
+      "name": "g",
       "conversion": 1000.0
+    },
+    {
+      "name": "mg",
+      "conversion": 1000000.0
     },
     {
       "name": "Ounce",
@@ -127,46 +123,38 @@
       "conversion": 0.157473
     },
     {
-      "name": "US ton",
-      "conversion": 0.00110231
-    },
-    {
-      "name": "Metric ton",
+      "name": "Tấn",
       "conversion": 0.001
     }
   ],
-  "Time": [
+  "Thời gian": [
     {
-      "name": "Second",
+      "name": "Giây",
       "conversion": 1.0,
       "base_unit": true
     },
     {
-      "name": "Millisecond",
+      "name": "Miligiây",
       "conversion": 1000.0
     },
     {
-      "name": "Minute",
+      "name": "Phút",
       "conversion": 0.0166666666666667
     },
     {
-      "name": "Hour",
+      "name": "Giờ",
       "conversion": 0.0002777777777778
     },
     {
-      "name": "Day",
+      "name": "Ngày",
       "conversion": 0.00001157407407
     },
     {
-      "name": "Week",
+      "name": "Tuần",
       "conversion": 0.000001653439153
-    },
-    {
-      "name": "Fortnight",
-      "conversion": 0.000000826719576
     }
   ],
-  "Digital Storage": [
+  "Lưu trữ kỹ thuật số": [
     {
       "name": "Megabyte",
       "conversion": 1.0,
@@ -201,14 +189,14 @@
       "conversion": 0.000000001
     }
   ],
-  "Energy": [
+  "Năng lượng": [
     {
-      "name": "Joule",
+      "name": "Jun",
       "conversion": 1.0,
       "base_unit": true
     },
     {
-      "name": "Kilojoule",
+      "name": "KJun",
       "conversion": 0.001
     },
     {
@@ -220,7 +208,7 @@
       "conversion": 0.000239006
     },
     {
-      "name": "Watt hour",
+      "name": "W/h",
       "conversion": 0.000277778
     },
     {
@@ -230,6 +218,29 @@
     {
       "name": "US therm",
       "conversion": 0.0000000094804
+    }
+  ],
+  "Âm thanh": [
+    {
+      "name": "Decibel (dB)",
+      "conversion": 1.0,
+      "base_unit": true
+    },
+    {
+      "name": "Neper (Np)",
+      "conversion": 2.3026
+    },
+    {
+      "name": "Bel (B)",
+      "conversion": 0.1
+    },
+    {
+      "name": "(W/m²)",
+      "conversion": 0.0794
+    },
+    {
+      "name": "Phons",
+      "conversion": 1.2589
     }
   ]
 }
